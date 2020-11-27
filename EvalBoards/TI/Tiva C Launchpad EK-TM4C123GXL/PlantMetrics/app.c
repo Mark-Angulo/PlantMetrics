@@ -163,7 +163,7 @@ int  main (void)
 											(OS_STK         *)&AppTaskStartStk[0],
 											(INT32U          ) APP_CFG_TASK_START_STK_SIZE,
 											(void           *) 0,
-											(INT16U          )(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
+											(INT16U          )(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP));
 
 	#if (OS_TASK_NAME_EN > 0)
 			OSTaskNameSet(APP_CFG_TASK_START_PRIO, "Start", &err);
@@ -322,7 +322,7 @@ static  void  Task3 (void *p_arg)
     while (1) {              
 			BSP_LED_Toggle(2);
 			UARTprintf("T3: ");
-			UARTprintf("Brightness = %i\n", Get_Brightness());
+			UARTprintf("Brightness = %f\n", Get_Brightness());
 			OSTimeDlyHMSM(0, 0, 0, 600);
 		}
 }

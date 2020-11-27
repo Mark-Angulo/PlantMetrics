@@ -2,7 +2,7 @@
 
 uint32_t reg_cache[4];
 
-#define VEML7700_SLAVE_ADDRESS 0x04
+#define VEML7700_SLAVE_ADDR 0x10 //Light
 
 #ifdef __TI_COMPILER_VERSION__
   void Delay(unsigned long ulCount) {
@@ -37,7 +37,7 @@ uint8_t veml_getGain(als_gain_t* gain)
 }
 
 uint8_t veml_setGain(als_gain_t gain)
-{ // yo wassup?
+{ // yo
   uint32_t reg = ( (reg_cache[COMMAND_ALS_SM] & ~ALS_SM_MASK) | 
                    (((uint32_t)(gain) << ALS_SM_SHIFT) & ALS_SM_MASK) );
   reg_cache[COMMAND_ALS_SM] = reg;
@@ -63,8 +63,6 @@ void veml_begin(uint8_t als_gain)
 {
 	uint8_t i = 0;
 	
-	// init I2C channel
-
   // write initial state to DFRobot_VEML7700
   reg_cache[0] = ( ((uint32_t)(als_gain) << ALS_SM_SHIFT) |
                         ((uint32_t)(ALS_INTEGRATION_100ms) << ALS_IT_SHIFT) |
@@ -87,46 +85,72 @@ void veml_begin(uint8_t als_gain)
 
 uint8_t veml_sendData(uint8_t command, uint32_t data)
 {
-	// TODO: send over I2C
-	/*
-  Wire.beginTransmission(I2C_ADDRESS);
-  if (Wire.write(command) != 1){
-    return STATUS_ERROR;
-  }
-  if (Wire.write(uint8_t(data & 0xff)) != 1){
-    return STATUS_ERROR;
-  }
-  if (Wire.write(uint8_t(data >> 8)) != 1){
-    return STATUS_ERROR;
-  }
-  if (Wire.endTransmission()){
-    return STATUS_ERROR;
-  }
-	*/	
+	// Tell the master module what address it will place on the bus when
+	// communicating with the slave.
+	I2CMasterSlaveAddrSet(I2C0_BASE, VEML7700_SLAVE_ADDR, false);
+
+	//put data to be sent into FIFO
+	I2CMasterDataPut(I2C0_BASE, command);
+
+	//Initiate send of data from the MCU
+	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+
+	// Wait until MCU is done transferring.
+	while(I2CMasterBusy(I2C0_BASE)) {}
+
+	// VEML send
+	I2CMasterDataPut(I2C0_BASE, (uint8_t)0xFF&data);
 	
+	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
+	
+	//wait for MCU to finish transaction
+	while(I2CMasterBusy(I2C0_BASE));
+	 
+	//return data pulled from the specified register
+	I2CMasterDataPut(I2C0_BASE, (uint8_t)0xFF&(data>>8));
+	
+	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
+
   return STATUS_OK;
 }
 
 uint8_t veml_receiveData(uint8_t command, uint32_t* data)
 {
-	// TODO: send over I2C
-	/*
-  Wire.beginTransmission(I2C_ADDRESS);
-  if (Wire.write(command) != 1){
-    return STATUS_ERROR;
-  }
-  if (Wire.endTransmission(false)){  // NB: don't send stop here
-    return STATUS_ERROR;
-  }
-  if (Wire.requestFrom(uint8_t(I2C_ADDRESS), uint8_t(2)) != 2){
-    return STATUS_ERROR;
-  }
-	*/
-	// TODO: receive over I2C
-	/*
-  data = Wire.read();
-  data |= uint32_t(Wire.read()) << 8;
-	*/ 
+	//specify that we are writing (a register address) to the
+	//slave device
+	I2CMasterSlaveAddrSet(I2C0_BASE, VEML7700_SLAVE_ADDR, false);
+
+	//specify register to be read
+	I2CMasterDataPut(I2C0_BASE, command);
+
+	//send control byte and register address byte to slave device
+	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+	 
+	//wait for MCU to finish transaction
+	while(I2CMasterBusy(I2C0_BASE));
+	 
+	//specify that we are going to read from slave device
+	I2CMasterSlaveAddrSet(I2C0_BASE, VEML7700_SLAVE_ADDR, true);
+	 
+	//send control byte and read from the register we
+	//specified
+	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_RECEIVE_START);
+	 
+	//wait for MCU to finish transaction
+	while(I2CMasterBusy(I2C0_BASE));
+	 // VEML recieve LSB 
+	//return data pulled from the specified register
+	*data = I2CMasterDataGet(I2C0_BASE);
+	
+	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_RECEIVE_CONT);
+	
+	//wait for MCU to finish transaction
+	while(I2CMasterBusy(I2C0_BASE));
+	 
+	//return data pulled from the specified register
+	*data |= I2CMasterDataGet(I2C0_BASE)<<8;
+	
+	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_RECEIVE_FINISH);
 	
   return STATUS_OK;
 }

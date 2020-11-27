@@ -1,8 +1,7 @@
 #include "Ports.h"
 
 //For I2C
-#define TIME_PERIOD 40 // TP = 80MHz / (2*(SCL_LP+SCL_HP)*I2C_CLK_Freq) = 80MHz / (20*100000) 
-#define VEML7700_SLAVE_ADDR 0x04 //Light
+#define VEML7700_SLAVE_ADDR 0x10 //Light
 #define STEMMA_SLAVE_ADDR 	0x05 //Soil Moisture
 #define SH31D_SLAVE_ADDR 		0x06 //Enviroment
 
@@ -20,8 +19,11 @@ void Init_I2C0(void) {
 	
 	//Initialize Slaves
 	I2CSlaveInit(I2C0_BASE, VEML7700_SLAVE_ADDR);
+	veml_begin(ALS_GAIN_x2);
 	I2CSlaveInit(I2C0_BASE, STEMMA_SLAVE_ADDR);
+	
 	I2CSlaveInit(I2C0_BASE, SH31D_SLAVE_ADDR);
+	
 }
 	
 //Initialize GPIO ports for ADC and Digital I/O
@@ -84,16 +86,11 @@ uint8_t Get_Temp(void){
 
 
 //Gets the brightness from the VEML7700
-uint8_t Get_Brightness(void) {
-	uint32_t i2cMsg = 0;
-
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_RECEIVE);
-	while (!I2CMasterBusy(I2C0_BASE)) {} //Wait till Master is not busy
-	if (I2CMasterErr(I2C0_BASE) == I2C_MASTER_ERR_NONE) {
-		//No Communication Errors
-		i2cMsg = I2CMasterDataGet(I2C0_BASE);
-	}
+float Get_Brightness(void) {
+  float brightness = 0;
 	
-	return i2cMsg;
+	veml_getALSLux(&brightness);
+	
+	return brightness;
 }
 
