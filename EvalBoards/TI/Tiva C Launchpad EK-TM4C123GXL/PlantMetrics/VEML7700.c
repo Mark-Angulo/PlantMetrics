@@ -1,4 +1,6 @@
 #include "VEML7700.h"
+#include "easy_i2c.h"
+
 
 uint32_t reg_cache[4];
 
@@ -85,74 +87,14 @@ void veml_begin(uint8_t als_gain)
 
 uint8_t veml_sendData(uint8_t command, uint32_t data)
 {
-	// Tell the master module what address it will place on the bus when
-	// communicating with the slave.
-	I2CMasterSlaveAddrSet(I2C0_BASE, VEML7700_SLAVE_ADDR, false);
-
-	//put data to be sent into FIFO
-	I2CMasterDataPut(I2C0_BASE, command);
-
-	//Initiate send of data from the MCU
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);
-
-	// Wait until MCU is done transferring.
-	while(I2CMasterBusy(I2C0_BASE)) {}
-
-	// VEML send
-	I2CMasterDataPut(I2C0_BASE, (uint8_t)0xFF&data);
-	
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
-	
-	//wait for MCU to finish transaction
-	while(I2CMasterBusy(I2C0_BASE));
-	 
-	//return data pulled from the specified register
-	I2CMasterDataPut(I2C0_BASE, (uint8_t)0xFF&(data>>8));
-	
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
-
-  return STATUS_OK;
+	I2CSend(VEML7700_SLAVE_ADDR, 3, command, (uint8_t)(data&0xFF), (uint8_t)((data>>8)&0xFF));
+	return I2CMasterErr(I2C0_BASE);
 }
 
 uint8_t veml_receiveData(uint8_t command, uint32_t* data)
 {
-	//specify that we are writing (a register address) to the
-	//slave device
-	I2CMasterSlaveAddrSet(I2C0_BASE, VEML7700_SLAVE_ADDR, false);
-
-	//specify register to be read
-	I2CMasterDataPut(I2C0_BASE, command);
-
-	//send control byte and register address byte to slave device
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);
-	 
-	//wait for MCU to finish transaction
-	while(I2CMasterBusy(I2C0_BASE));
-	 
-	//specify that we are going to read from slave device
-	I2CMasterSlaveAddrSet(I2C0_BASE, VEML7700_SLAVE_ADDR, true);
-	 
-	//send control byte and read from the register we
-	//specified
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_RECEIVE_START);
-	 
-	//wait for MCU to finish transaction
-	while(I2CMasterBusy(I2C0_BASE));
-	 // VEML recieve LSB 
-	//return data pulled from the specified register
-	*data = I2CMasterDataGet(I2C0_BASE);
-	
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_RECEIVE_CONT);
-	
-	//wait for MCU to finish transaction
-	while(I2CMasterBusy(I2C0_BASE));
-	 
-	//return data pulled from the specified register
-	*data |= I2CMasterDataGet(I2C0_BASE)<<8;
-	
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_RECEIVE_FINISH);
-	
-  return STATUS_OK;
+	*data = I2CReceive(VEML7700_SLAVE_ADDR, command);
+  return I2CMasterErr(I2C0_BASE);
 }
 
 uint8_t veml_getALS(uint32_t* als)

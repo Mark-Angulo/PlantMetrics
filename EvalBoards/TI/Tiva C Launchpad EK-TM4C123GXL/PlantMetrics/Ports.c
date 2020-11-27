@@ -1,31 +1,16 @@
 #include "Ports.h"
+#include "driverlib/uart.h"
+#include "utils/uartstdio.h"
+#include "easy_i2c.h"
 
 //For I2C
-#define VEML7700_SLAVE_ADDR 0x10 //Light
+#define VEML7700_SLAVE_ADDR 0x11 //Light
 #define STEMMA_SLAVE_ADDR 	0x05 //Soil Moisture
 #define SH31D_SLAVE_ADDR 		0x06 //Enviroment
 
-//Bit-Specific Addressing
+
 #define PE2 (*((volatile uint32_t *)0x40024010)) //Thermistor
-#define PE3 (*((volatile uint32_t *)0x40024020)) //
-#define PE4 (*((volatile uint32_t *)0x40024040)) //
-#define PE5 (*((volatile uint32_t *)0x40024080)) //
-	
-void Init_I2C0(void) {
-	SYSCTL_RCGCI2C_R |= 0x0001;								// activate I2C Clk
-	
-	//Initialize Master
-	I2CMasterInitExpClk(I2C0_BASE, SYSCTL_RCGCI2C_R, false);
-	
-	//Initialize Slaves
-	I2CSlaveInit(I2C0_BASE, VEML7700_SLAVE_ADDR);
-	veml_begin(ALS_GAIN_x2);
-	I2CSlaveInit(I2C0_BASE, STEMMA_SLAVE_ADDR);
-	
-	I2CSlaveInit(I2C0_BASE, SH31D_SLAVE_ADDR);
-	
-}
-	
+
 //Initialize GPIO ports for ADC and Digital I/O
 //  -Port PE2 for ADC input
 //  -Ports PB2,PB3 for I2C
@@ -52,7 +37,7 @@ void Ports_Init(void) {
   ADC0_ACTSS_R |= 0x0008;										// 13) enable sample sequencer 3
 
 	//Init I2C
-	Init_I2C0();
+	InitI2C0();
 		
 }
 
@@ -89,7 +74,7 @@ uint8_t Get_Temp(void){
 uint32_t Get_Brightness(void) {
   uint32_t rawALS = 0;
 	
-	veml_getALS(&rawALS);
+	UARTprintf("Error: %d\n", veml_getALS(&rawALS));
 	
 	return rawALS;
 }

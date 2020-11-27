@@ -9,3 +9,14 @@
 .\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\flash\ports.o: ..\tm4c123gh6pm.h
 .\flash\ports.o: ..\../bsp/driverlib/i2c.h
+.\flash\ports.o: ..\..\BSP\driverlib/uart.h
+.\flash\ports.o: ..\..\BSP\utils/uartstdio.h
+.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\flash\ports.o: ..\easy_i2c.h
+.\flash\ports.o: ..\..\BSP\inc/hw_i2c.h
+.\flash\ports.o: ..\..\BSP\inc/hw_types.h
+.\flash\ports.o: ..\..\BSP\inc/hw_gpio.h
+.\flash\ports.o: ..\../bsp/driverlib/i2c.h
+.\flash\ports.o: ..\../bsp/driverlib/sysctl.h
+.\flash\ports.o: ..\../bsp/driverlib/gpio.h
+.\flash\ports.o: ..\../bsp/driverlib/pin_map.h

@@ -69,6 +69,7 @@
 #define I2C_O_SICR              0x00000818  // I2C Slave Interrupt Clear
 #define I2C_O_SOAR2             0x0000081C  // I2C Slave Own Address 2
 #define I2C_O_SACKCTL           0x00000820  // I2C Slave ACK Control
+#define I2C_O_FIFOCTL              0x00000F04  // I2C FIFO Control
 #define I2C_O_PP                0x00000FC0  // I2C Peripheral Properties
 #define I2C_O_PC                0x00000FC4  // I2C Peripheral Configuration
 
