@@ -40,7 +40,7 @@ void Ports_Init(void) {
   GPIO_PORTE_DEN_R &= ~0x04;								// 4) disable digital I/O on PE2
   GPIO_PORTE_AMSEL_R |= 0x04;								// 5a) enable analog function on PE2
 	
-	ADC0_PC_R &= ~0xF;
+	//ADC0_PC_R &= ~0xF;
   ADC0_PC_R |= 0x05;												// 7) configure for 500k samples
   ADC0_SSPRI_R = 0x0123;										// 8) Sequencer 3 is highest priority
   ADC0_ACTSS_R &= ~0x0008;									// 9) disable sample sequencer 3
@@ -86,11 +86,11 @@ uint8_t Get_Temp(void){
 
 
 //Gets the brightness from the VEML7700
-float Get_Brightness(void) {
-  float brightness = 0;
+uint32_t Get_Brightness(void) {
+  uint32_t rawALS = 0;
 	
-	veml_getALSLux(&brightness);
+	veml_getALS(&rawALS);
 	
-	return brightness;
+	return rawALS;
 }
 

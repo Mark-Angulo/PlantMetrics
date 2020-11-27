@@ -136,6 +136,8 @@ static  void  Task4          (void       *p_arg);
 
 int  main (void)
 {
+	INT16U opts;
+	
 	#if (OS_TASK_NAME_EN > 0)
 			CPU_INT08U  err;
 	#endif
@@ -154,6 +156,8 @@ int  main (void)
 			CPU_IntDis();                                               /* Disable all interrupts.                              */
 
 			OSInit();                                                   /* Initialize "uC/OS-II, The Real-Time Kernel"          */
+	
+			opts = (OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR );
 
 			OSTaskCreateExt((void (*)(void *)) AppTaskStart,           /* Create the start task                                */
 											(void           *) 0,
@@ -163,7 +167,7 @@ int  main (void)
 											(OS_STK         *)&AppTaskStartStk[0],
 											(INT32U          ) APP_CFG_TASK_START_STK_SIZE,
 											(void           *) 0,
-											(INT16U          )(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP));
+											(INT16U          )opts);
 
 	#if (OS_TASK_NAME_EN > 0)
 			OSTaskNameSet(APP_CFG_TASK_START_PRIO, "Start", &err);
@@ -322,7 +326,7 @@ static  void  Task3 (void *p_arg)
     while (1) {              
 			BSP_LED_Toggle(2);
 			UARTprintf("T3: ");
-			UARTprintf("Brightness = %f\n", Get_Brightness());
+			UARTprintf("Brightness = %i\n", Get_Brightness());
 			OSTimeDlyHMSM(0, 0, 0, 600);
 		}
 }

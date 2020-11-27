@@ -1,7 +1,7 @@
 Dependencies for Project 'PlantMetrics', Target 'FLASH': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (..\app.c)(0x5FC16417)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\app.o --omf_browse .\flash\app.crf --depend .\flash\app.d)
-I (..\app_cfg.h)(0x5E556C88)
+F (..\app.c)(0x5FC175EC)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\app.o --omf_browse .\flash\app.crf --depend .\flash\app.d)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\..\..\..\..\uC-CPU\cpu_core.h)(0x5E556C88)
 I (..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView\cpu.h)(0x5E556C88)
 I (..\..\..\..\..\uC-CPU\cpu_def.h)(0x5E556C88)
@@ -27,14 +27,14 @@ I (..\..\BSP\driverlib/sysctl.h)(0x5E556C86)
 I (..\..\BSP\driverlib/uart.h)(0x5E556C86)
 I (..\..\BSP\utils/uartstdio.h)(0x5E556C88)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5D9B88EA)
-I (..\Ports.h)(0x5FC16408)
+I (..\Ports.h)(0x5FC175E4)
 I (C:\Keil_v5\ARM\ARMCC\include\Math.h)(0x5D9B88E2)
 I (..\..\bsp\driverlib\i2c.h)(0x5FBFDE29)
-I (..\VEML7700.h)(0x5FBEE73D)
+I (..\VEML7700.h)(0x5FC175AD)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B88EA)
 I (..\tm4c123gh6pm.h)(0x5BA29B9E)
 I (..\../bsp/driverlib/i2c.h)(0x5FBFDE29)
-F (..\app_cfg.h)(0x5E556C88)()
+F (..\app_cfg.h)(0x5FC170AE)()
 F (..\bsp_cfg.h)(0x5E556C88)()
 F (..\cpu_cfg.h)(0x5E556C88)()
 F (..\lib_cfg.h)(0x5E556C88)()
@@ -42,7 +42,7 @@ F (..\os_cfg.h)(0x5E556C88)()
 F (..\app_hooks.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\app_hooks.o --omf_browse .\flash\app_hooks.crf --depend .\flash\app_hooks.d)
 I (..\..\..\..\..\uCOS-II\Source\os.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\BSP\bsp.c)(0x5E556C86)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\bsp.o --omf_browse .\flash\bsp.crf --depend .\flash\bsp.d)
@@ -69,7 +69,7 @@ I (..\..\..\..\..\uC-CPU\cpu_def.h)(0x5E556C88)
 I (..\cpu_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Source\os.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 I (..\..\BSP\..\bsp\bsp_int.h)(0x5E556C86)
@@ -174,54 +174,54 @@ I (..\lib_cfg.h)(0x5E556C88)
 F (..\..\..\..\..\uC-LIB\lib_str.h)(0x5E556C88)()
 F (..\..\..\..\..\uC-LIB\Ports\ARM-Cortex-M4\RealView\lib_mem_a.asm)(0x5E556C88)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 529" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\list\lib_mem_a.lst --xref -o .\flash\lib_mem_a.o --depend .\flash\lib_mem_a.d)
 F (..\..\..\..\..\uCOS-II\Source\os.h)(0x5E556C88)()
-F (..\..\..\..\..\uCOS-II\Source\os_core.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_core.o --omf_browse .\flash\os_core.crf --depend .\flash\os_core.d)
+F (..\..\..\..\..\uCOS-II\Source\os_core.c)(0x5FC17043)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_core.o --omf_browse .\flash\os_core.crf --depend .\flash\os_core.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_flag.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_flag.o --omf_browse .\flash\os_flag.crf --depend .\flash\os_flag.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_mbox.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_mbox.o --omf_browse .\flash\os_mbox.crf --depend .\flash\os_mbox.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_mem.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_mem.o --omf_browse .\flash\os_mem.crf --depend .\flash\os_mem.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_mutex.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_mutex.o --omf_browse .\flash\os_mutex.crf --depend .\flash\os_mutex.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_q.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_q.o --omf_browse .\flash\os_q.crf --depend .\flash\os_q.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_sem.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_sem.o --omf_browse .\flash\os_sem.crf --depend .\flash\os_sem.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_task.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_task.o --omf_browse .\flash\os_task.crf --depend .\flash\os_task.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_time.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_time.o --omf_browse .\flash\os_time.crf --depend .\flash\os_time.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\os_tmr.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_tmr.o --omf_browse .\flash\os_tmr.crf --depend .\flash\os_tmr.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)()
@@ -229,7 +229,7 @@ F (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556
 F (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_a.asm)(0x5E556C88)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 529" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\list\os_cpu_a.lst --xref -o .\flash\os_cpu_a.o --depend .\flash\os_cpu_a.d)
 F (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_c.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_cpu_c.o --omf_browse .\flash\os_cpu_c.crf --depend .\flash\os_cpu_c.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 I (..\..\..\..\..\uC-LIB\lib_def.h)(0x5E556C88)
@@ -238,7 +238,7 @@ I (..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView\cpu.h)(0x5E556C88)
 I (..\cpu_cfg.h)(0x5E556C88)
 F (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_dbg.c)(0x5E556C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\os_dbg.o --omf_browse .\flash\os_dbg.crf --depend .\flash\os_dbg.d)
 I (..\..\..\..\..\uCOS-II\Source\ucos_ii.h)(0x5E556C88)
-I (..\app_cfg.h)(0x5E556C88)
+I (..\app_cfg.h)(0x5FC170AE)
 I (..\os_cfg.h)(0x5E556C88)
 I (..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5E556C88)
 F (..\..\BSP\driverlib\adc.c)(0x5E556C86)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\adc.o --omf_browse .\flash\adc.crf --depend .\flash\adc.d)
@@ -520,25 +520,25 @@ I (..\..\BSP\driverlib/rom_map.h)(0x5E556C86)
 I (..\..\BSP\driverlib/sysctl.h)(0x5E556C86)
 I (..\..\BSP\driverlib/uart.h)(0x5E556C86)
 I (..\..\BSP\utils/uartstdio.h)(0x5E556C88)
-F (..\Ports.c)(0x5FC16407)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\ports.o --omf_browse .\flash\ports.crf --depend .\flash\ports.d)
-I (..\Ports.h)(0x5FC16408)
+F (..\Ports.c)(0x5FC175E4)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\ports.o --omf_browse .\flash\ports.crf --depend .\flash\ports.d)
+I (..\Ports.h)(0x5FC175E4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B88E8)
 I (C:\Keil_v5\ARM\ARMCC\include\Math.h)(0x5D9B88E2)
 I (..\..\bsp\driverlib\i2c.h)(0x5FBFDE29)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9B88E8)
 I (..\..\BSP\inc/hw_memmap.h)(0x5E556C86)
-I (..\VEML7700.h)(0x5FBEE73D)
+I (..\VEML7700.h)(0x5FC175AD)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B88EA)
 I (..\tm4c123gh6pm.h)(0x5BA29B9E)
 I (..\../bsp/driverlib/i2c.h)(0x5FBFDE29)
-F (..\Ports.h)(0x5FC16408)()
+F (..\Ports.h)(0x5FC175E4)()
 F (..\tm4c123gh6pm.h)(0x5BA29B9E)()
 F (..\VEML7700.c)(0x5FC16134)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\veml7700.o --omf_browse .\flash\veml7700.crf --depend .\flash\veml7700.d)
-I (..\VEML7700.h)(0x5FBEE73D)
+I (..\VEML7700.h)(0x5FC175AD)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B88E8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B88EA)
 I (..\tm4c123gh6pm.h)(0x5BA29B9E)
 I (..\../bsp/driverlib/i2c.h)(0x5FBFDE29)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9B88E8)
 I (..\..\BSP\inc/hw_memmap.h)(0x5E556C86)
-F (..\VEML7700.h)(0x5FBEE73D)()
+F (..\VEML7700.h)(0x5FC175AD)()
