@@ -1,0 +1,13 @@
+.\flash\i2c_1.o: ..\i2c.c
+.\flash\i2c_1.o: ..\i2c.h
+.\flash\i2c_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\flash\i2c_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\flash\i2c_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\flash\i2c_1.o: ..\..\BSP\inc/hw_i2c.h
+.\flash\i2c_1.o: ..\..\BSP\inc/hw_memmap.h
+.\flash\i2c_1.o: ..\..\BSP\inc/hw_types.h
+.\flash\i2c_1.o: ..\..\BSP\inc/hw_gpio.h
+.\flash\i2c_1.o: ..\..\BSP\driverlib/i2c.h
+.\flash\i2c_1.o: ..\..\BSP\driverlib/sysctl.h
+.\flash\i2c_1.o: ..\..\BSP\driverlib/gpio.h
+.\flash\i2c_1.o: ..\..\BSP\driverlib/pin_map.h

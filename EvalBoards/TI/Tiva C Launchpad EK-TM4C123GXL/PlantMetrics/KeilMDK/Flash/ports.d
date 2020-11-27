@@ -1,0 +1,11 @@
+.\flash\ports.o: ..\Ports.c
+.\flash\ports.o: ..\Ports.h
+.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
+.\flash\ports.o: ..\..\bsp\driverlib\i2c.h
+.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\flash\ports.o: ..\..\BSP\inc/hw_memmap.h
+.\flash\ports.o: ..\VEML7700.h
+.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\flash\ports.o: ..\tm4c123gh6pm.h
+.\flash\ports.o: ..\../bsp/driverlib/i2c.h
