@@ -1,0 +1,9 @@
+.\flash\esp8266.o: ..\esp8266.c
+.\flash\esp8266.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\flash\esp8266.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\flash\esp8266.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\flash\esp8266.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\flash\esp8266.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\flash\esp8266.o: ..\tm4c123gh6pm.h
+.\flash\esp8266.o: ..\esp8266.h
+.\flash\esp8266.o: ..\UART.h

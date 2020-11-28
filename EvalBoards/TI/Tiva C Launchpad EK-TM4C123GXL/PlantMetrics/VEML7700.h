@@ -60,7 +60,7 @@ uint8_t getLowThresholdEvent(uint8_t& event);
 void veml_begin(uint8_t als_gain);
 //uint8_t veml_getALSLux(float* lux);
 //uint8_t veml_getWhiteLux(float* lux);
-uint8_t veml_getALS(uint32_t* als);
+uint8_t veml_getALS(uint8_t* als);
 /* Not implemented
 uint8_t getAutoALSLux(float& lux);
 uint8_t getAutoWhiteLux(float& lux);
@@ -94,5 +94,5 @@ enum { COMMAND_ALS_IF_L = 0x06, ALS_IF_L_MASK = 0x8000, ALS_IF_L_SHIFT = 15 };
 enum { COMMAND_ALS_IF_H = 0x06, ALS_IF_H_MASK = 0x4000, ALS_IF_H_SHIFT = 14 };
 
 uint8_t veml_sendData(uint8_t command, uint32_t data);
-uint8_t veml_receiveData(uint8_t command, uint32_t* data);
+uint8_t veml_receiveData(uint8_t command, uint8_t* data);
 //void veml_scaleLux(uint32_t raw_counts, float* lux);

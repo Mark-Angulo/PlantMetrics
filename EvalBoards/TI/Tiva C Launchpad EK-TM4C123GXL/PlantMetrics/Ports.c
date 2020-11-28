@@ -3,29 +3,25 @@
 #include "utils/uartstdio.h"
 #include "easy_i2c.h"
 
+
 //For I2C
-#define VEML7700_SLAVE_ADDR 0x11 //Light
+#define VEML7700_SLAVE_ADDR 0x10 //Light
 #define STEMMA_SLAVE_ADDR 	0x05 //Soil Moisture
 #define SHT31D_SLAVE_ADDR 	0x44 //Enviroment
-
-
 #define PE2 (*((volatile uint32_t *)0x40024010)) //Thermistor
 	
-void Init_I2C0(void) {
+
 	
+void Init_I2C0(void) {
 	//Initialize Master
 	InitI2C0(); //from easy_i2c
-	
 	//Initialize Slaves
-	I2CSlaveInit(I2C0_BASE, VEML7700_SLAVE_ADDR);
+	// I2CSlaveInit(I2C0_BASE, VEML7700_SLAVE_ADDR);
 	veml_begin(ALS_GAIN_x2);
-	
-	I2CSlaveInit(I2C0_BASE, STEMMA_SLAVE_ADDR);
-	
-	
-	I2CSlaveInit(I2C0_BASE, SHT31D_SLAVE_ADDR);
+	// I2CSlaveInit(I2C0_BASE, STEMMA_SLAVE_ADDR);
+	// I2CSlaveInit(I2C0_BASE, SHT31D_SLAVE_ADDR);
+	delay(100);
 	SHT31_begin();
-	
 }
 	
 //Initialize GPIO port for ADC and I2C
@@ -62,8 +58,8 @@ void Ports_Init(void) {
 	ADC0_ACTSS_R |= 0x0008;       // 13) enable sample sequencer 3 before we sample.
 		
 	//Init I2C
-	InitI2C0();
-		
+	Init_I2C0();
+
 }
 
 // Returns the temperature in Farenheit
@@ -97,34 +93,20 @@ uint8_t Get_Temp(void){
 
 
 //Gets the brightness from the VEML7700
-uint32_t Get_Brightness(void) {
-  uint32_t rawALS = 0;
-	
-	veml_getALS(&rawALS);
-	
-	return rawALS;
+uint16_t Get_Brightness(void) {
+	uint8_t* als = (uint8_t *)malloc(2);
+	veml_getALS(als);
+	return (als[1] << 8) | als[0];
 }
 
 uint32_t Get_SoilMoisture(void) {
 	uint32_t moisture = 0;
-	
 	//Call STEMMA
-	
 	return moisture;
 }
-uint32_t Get_EnviromentInfo(char infoType) {
-	
-	uint32_t data = 0;
-	
-	switch (infoType) {
-		case 'H':
-			data = SHT31_readHumidity();
-			break;
-		case 'T':
-			data = SHT31_readTemperature();
-			break;
-	}
-	
-	return data;
+void Get_EnviromentInfo(uint16_t* hum, uint16_t* temp) {
+  delay(100);
+	SHT31_readTempHum();
+	*hum = SHT31_readHumidity();
+	*temp = SHT31_readTemperature();
 }
-

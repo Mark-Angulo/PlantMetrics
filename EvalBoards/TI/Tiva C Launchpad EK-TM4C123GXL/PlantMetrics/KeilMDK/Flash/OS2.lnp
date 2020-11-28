@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp.sp
+--cpu=Cortex-M4.fp
 ".\flash\app.o"
 ".\flash\app_hooks.o"
 ".\flash\bsp.o"
@@ -55,8 +55,11 @@
 ".\flash\uartstdio.o"
 ".\flash\ports.o"
 ".\flash\easy_i2c.o"
-".\flash\veml7700.o"
 ".\flash\sht31.o"
+".\flash\veml7700.o"
+".\flash\esp8266.o"
+".\flash\uart_1.o"
+"..\MQTTPacket.lib"
 --library_type=microlib --strict --scatter ".\Flash\OS2.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

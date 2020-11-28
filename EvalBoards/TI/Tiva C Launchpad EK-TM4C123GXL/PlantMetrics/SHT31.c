@@ -1,8 +1,33 @@
 #include "SHT31.h"
 
-float humidity;
-float temp;
+int32_t humidity;
+int32_t temp;
 int i,j;
+static uint8_t crc8(const uint8_t *data, int len);
+
+#ifdef __TI_COMPILER_VERSION__
+  void Delay(unsigned long ulCount) {
+		__asm (" subs r0, #1\n"
+		"	bne Delay \n"
+		"	bx LR\n");
+	}
+#else
+  void Delay(unsigned long ulCount) { 
+		unsigned long d;
+		for (d=0; d<ulCount; d++) {}
+	}
+#endif
+
+#define CLOCKSPEED 80000000
+
+//A General Purpose Delay
+void delay(uint32_t t){ // t is in ms
+	// The Delay function is exactly 3 ARM instructions and is therefore 3 clocks
+	// Do (delay_in_seconds)*clock_speed/3 to get wanted value
+  // (500ms)*80MHz/3 = 13,333,333.33
+	//Delay(13333333); // Delay's 500ms
+	Delay((t*CLOCKSPEED)/1000/3);
+}
 
 /**
  * Initialises the I2C bus, and assigns the I2C address to us.
@@ -23,10 +48,10 @@ bool SHT31_begin(void) {
  * @return The 16-bit status register.
  */
 uint16_t SHT31_readStatus(void) {
-  uint8_t data[3];
+  uint8_t* data;
 	uint16_t stat;
 	
-	SHT31_writeCommand(SHT31_READSTATUS);
+	SHT31_readCommand(SHT31_READSTATUS, data, 3);
 
 	//TODO: Translate this
   //i2c_dev->read(data, 3);
@@ -34,6 +59,7 @@ uint16_t SHT31_readStatus(void) {
   stat = data[0];
   stat <<= 8;
   stat |= data[1];
+	
   // Serial.println(stat, HEX);
   return stat;
 }
@@ -43,7 +69,7 @@ uint16_t SHT31_readStatus(void) {
  */
 void SHT31_reset(void) {
   SHT31_writeCommand(SHT31_SOFTRESET);
-  //delay(10);
+  delay(10);
 }
 
 
@@ -53,9 +79,6 @@ void SHT31_reset(void) {
  * @return A float value indicating the temperature.
  */
 uint32_t SHT31_readTemperature(void) {
-  if (!SHT31_readTempHum())
-    return 0;
-
   return (uint32_t)temp;
 }
 
@@ -65,11 +88,6 @@ uint32_t SHT31_readTemperature(void) {
  * @return A float value representing relative humidity.
  */
 uint32_t SHT31_readHumidity(void) {
-  if (!SHT31_readTempHum())
-    return 0;
-	
-	SHT31_writeCommand(SHT31_MEAS_HIGHREP);
-
   return humidity;
 }
 
@@ -112,33 +130,40 @@ static uint8_t crc8(const uint8_t *data, int len) {
  * @return True if successful, otherwise false.
  */
 bool SHT31_readTempHum(void) {
-  uint8_t readbuffer[6];
+	uint8_t* readbuffer; 
 	int32_t stemp, shum;
+	
+	SHT31_readCommand(SHT31_MEAS_MEDREP, readbuffer, 6);
 
-  SHT31_writeCommand(SHT31_MEAS_HIGHREP);
+  delay(20);
 
-  //delay(20);
-
-	//TODO: Translate this
-	//  i2c_dev->read(readbuffer, sizeof(readbuffer));
-
+	
+	/*
   if (readbuffer[2] != crc8(readbuffer, 2) ||
       readbuffer[5] != crc8(readbuffer + 3, 2))
     return false;
+	*/
+	
+	// UARTprintf("data: %x,%x,%x,%x,%x,%x", readbuffer[0], readbuffer[1], readbuffer[2], readbuffer[3], readbuffer[4], readbuffer[5]);
 
-  stemp = (int32_t)(((uint32_t)readbuffer[0] << 8) | readbuffer[1]);
+	stemp = (int32_t)(((uint32_t)readbuffer[0] << 8) | readbuffer[1]);
   // simplified (65536 instead of 65535) integer version of:
   // temp = (stemp * 175.0f) / 65535.0f - 45.0f;
+	
   stemp = ((4375 * stemp) >> 14) - 4500;
-  temp = (float)stemp / 100.0f;
+  temp = stemp / 100;
 
-  shum = ((uint32_t)readbuffer[3] << 8) | readbuffer[4];
+	shum = ((uint32_t)readbuffer[3] << 8) | readbuffer[4];
   // simplified (65536 instead of 65535) integer version of:
   // humidity = (shum * 100.0f) / 65535.0f;
   shum = (625 * shum) >> 12;
-  humidity = (float)shum / 100.0f;
+   humidity = shum / 100;
 
   return true;
+}
+
+void SHT31_readCommand(uint16_t command, uint8_t* buf, uint8_t bytecount) {
+		I2CReceive(SHT31_DEFAULT_ADDR, command, buf, bytecount);
 }
 
 
@@ -152,32 +177,8 @@ bool SHT31_writeCommand(uint16_t command) {
 
   cmd[0] = command >> 8;
   cmd[1] = command & 0xFF;
-
-  // Tell the master module what address it will place on the bus when
-	// communicating with the slave.
-	I2CMasterSlaveAddrSet(I2C0_BASE, SHT31_DEFAULT_ADDR, false);
-
-	//Initiate send of data from the MCU
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);
-
-	// Wait until MCU is done transferring.
-	while(I2CMasterBusy(I2C0_BASE)) {}
-
-	// VEML send
-	I2CMasterDataPut(I2C0_BASE, cmd[0]);
 	
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_CONT);
-	
-	//wait for MCU to finish transaction
-	while(I2CMasterBusy(I2C0_BASE));
-	 
-	//return data pulled from the specified register
-	I2CMasterDataPut(I2C0_BASE, cmd[1]);
-	
-	I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
-		
-	// Wait until MCU is done transferring.
-  while(I2CMasterBusy(I2C0_BASE));
+	I2CSend(SHT31_DEFAULT_ADDR, 2, cmd[0], cmd[1]);
 		
 	return 0;
 }

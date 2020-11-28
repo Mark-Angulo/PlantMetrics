@@ -6,3 +6,14 @@
 .\flash\sht31.o: ..\../bsp/driverlib/i2c.h
 .\flash\sht31.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\flash\sht31.o: ..\..\BSP\inc/hw_memmap.h
+.\flash\sht31.o: ..\easy_i2c.h
+.\flash\sht31.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\flash\sht31.o: ..\..\BSP\inc/hw_i2c.h
+.\flash\sht31.o: ..\..\BSP\inc/hw_types.h
+.\flash\sht31.o: ..\..\BSP\inc/hw_gpio.h
+.\flash\sht31.o: ..\..\BSP\driverlib/uart.h
+.\flash\sht31.o: ..\..\BSP\utils/uartstdio.h
+.\flash\sht31.o: ..\../bsp/driverlib/i2c.h
+.\flash\sht31.o: ..\../bsp/driverlib/sysctl.h
+.\flash\sht31.o: ..\../bsp/driverlib/gpio.h
+.\flash\sht31.o: ..\../bsp/driverlib/pin_map.h

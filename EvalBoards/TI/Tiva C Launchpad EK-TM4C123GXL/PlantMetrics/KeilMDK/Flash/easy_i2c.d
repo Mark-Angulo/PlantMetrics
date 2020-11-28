@@ -7,6 +7,8 @@
 .\flash\easy_i2c.o: ..\..\BSP\inc/hw_types.h
 .\flash\easy_i2c.o: ..\..\BSP\inc/hw_gpio.h
 .\flash\easy_i2c.o: ..\..\BSP\inc/hw_memmap.h
+.\flash\easy_i2c.o: ..\..\BSP\driverlib/uart.h
+.\flash\easy_i2c.o: ..\..\BSP\utils/uartstdio.h
 .\flash\easy_i2c.o: ..\../bsp/driverlib/i2c.h
 .\flash\easy_i2c.o: ..\../bsp/driverlib/sysctl.h
 .\flash\easy_i2c.o: ..\../bsp/driverlib/gpio.h

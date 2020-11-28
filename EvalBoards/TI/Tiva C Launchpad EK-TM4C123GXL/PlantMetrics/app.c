@@ -60,7 +60,8 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
-
+#include "esp8266.h"
+#include "MQTTPacket.h"
 #include "Ports.h"
 
 /*
@@ -96,6 +97,13 @@ static  OS_STK       Task1Stk[APP_CFG_TASK_START_STK_SIZE];
 static  OS_STK       Task2Stk[APP_CFG_TASK_START_STK_SIZE];
 static  OS_STK       Task3Stk[APP_CFG_TASK_START_STK_SIZE];
 static  OS_STK       Task4Stk[APP_CFG_TASK_START_STK_SIZE];
+static  OS_STK       Task5Stk[APP_CFG_TASK_START_STK_SIZE];
+
+OS_EVENT* th_sem;
+OS_EVENT* lum_sem;
+OS_EVENT* temp_sem;
+OS_EVENT* moist_sem;
+OS_EVENT* print_sem; // Keep the prints in the for the sake of easy debugging
 
 
 /*
@@ -117,6 +125,7 @@ static  void  Task1          (void       *p_arg);
 static  void  Task2          (void       *p_arg);
 static  void  Task3          (void       *p_arg);
 static  void  Task4          (void       *p_arg);
+static  void  Task5          (void       *p_arg);
 
 /*$PAGE*/
 /*
@@ -134,13 +143,13 @@ static  void  Task4          (void       *p_arg);
 *********************************************************************************************************
 */
 
+CPU_INT08U  err;
+
 int  main (void)
 {
 	INT16U opts;
 	
-	#if (OS_TASK_NAME_EN > 0)
-			CPU_INT08U  err;
-	#endif
+
 
 	#if (CPU_CFG_NAME_EN == DEF_ENABLED)
 			CPU_ERR     cpu_err;
@@ -150,6 +159,10 @@ int  main (void)
 			CPU_NameSet((CPU_CHAR *)"TM4C129XNCZAD",
 									(CPU_ERR  *)&cpu_err);
 	#endif
+			th_sem = OSSemCreate(1);
+			temp_sem = OSSemCreate(1);
+			moist_sem = OSSemCreate(1);
+			lum_sem = OSSemCreate(1);
 
 			Ports_Init(); //Init ADC port
 			
@@ -169,9 +182,7 @@ int  main (void)
 											(void           *) 0,
 											(INT16U          )opts);
 
-	#if (OS_TASK_NAME_EN > 0)
 			OSTaskNameSet(APP_CFG_TASK_START_PRIO, "Start", &err);
-	#endif
 
 			OSStart();                                                  /* Start multitasking (i.e. give control to uC/OS-II)   */
 
@@ -180,6 +191,7 @@ int  main (void)
 			;
     }
 }
+
 
 
 /*$PAGE*/
@@ -280,26 +292,106 @@ OSTaskCreate((void (*)(void *)) Task2,           /* Create the second task      
                     (OS_STK         *)&Task2Stk[APP_CFG_TASK_START_STK_SIZE - 1],
                     (INT8U           ) 6 );  						// Task Priority
 										
-OSTaskCreate((void (*)(void *)) Task3,           /* Create the second task                                */
+OSTaskCreate((void (*)(void *)) Task3,           /* Create the third task                                */
                     (void           *) 0,							// argument
                     (OS_STK         *)&Task3Stk[APP_CFG_TASK_START_STK_SIZE - 1],
                     (INT8U           ) 7 );  						// Task Priority
 										
-OSTaskCreate((void (*)(void *)) Task4,           /* Create the second task                                */
+OSTaskCreate((void (*)(void *)) Task4,           /* Create the four task                                */
                     (void           *) 0,							// argument
                     (OS_STK         *)&Task4Stk[APP_CFG_TASK_START_STK_SIZE - 1],
                     (INT8U           ) 8 );  						// Task Priority
+
+/*OSTaskCreate((void (*)(void *)) Task5,           
+                    (void           *) 0,							// argument
+                    (OS_STK         *)&Task5Stk[APP_CFG_TASK_START_STK_SIZE - 1],
+                    (INT8U           ) 9 );  						// Task Priority*/
+
          										
 }
 
+volatile uint8_t soil_temp[1];
+volatile uint8_t lumens[2];
+volatile uint8_t soil_moist[4];
+volatile uint8_t env_th[4];
+
+void PublishMQTT(char* topic,  uint8_t payload_opt, uint32_t payload_size) {
+	// *** Initialization of the MQTT Packet ***
+	static char *host = "192.168.1.27"; // local IP of the MQTT server (could also go through public IP if we want to better scale (TODO: setup port forwarded MQTT interface)
+	static int port = 1883; // the SSL register MQTT port
+	MQTTPacket_connectData data = MQTTPacket_connectData_initializer;
+  MQTTString topicString = MQTTString_initializer; 
+	char buf[200];
+	int buflen = sizeof(buf);
+	int len = 0;
+	
+	volatile uint8_t * payload;
+	switch(payload_opt) {
+		case 1:
+			payload = soil_temp;
+			break;
+		case 2:
+			payload = lumens;
+			break;
+		case 3:
+			payload = soil_moist;
+			break;
+		case 4:
+			payload = env_th;
+			break;
+	}
+
+	UARTprintf("here");
+
+
+	// *** Setup socket ***
+	OSSemPend(print_sem, 0, &err);
+	ESP8266_Init(115200); // connect to access point, set up as client
+	UARTprintf("here");
+
+  // ESP8266_GetVersionNumber();
+	// ESP8266_GetStatus();
+	if(ESP8266_MakeTCPConnection(host, port)) {
+		// *** create MQTT packet ***
+		UARTprintf("here");
+
+	  data.clientID.cstring = "pm1";
+		data.keepAliveInterval = 20;
+		data.cleansession = 1;
+		data.username.cstring = "mqttpub1";
+		data.password.cstring = "mqttpub1";
+		data.MQTTVersion = 4;
+		topicString.cstring = topic;
+		// add packet start
+		len = MQTTSerialize_connect((unsigned char *)buf, buflen, &data);
+		// add topic and payload to message
+		len += MQTTSerialize_publish((unsigned char *)(buf + len), buflen - len, 0,0,0,0, topicString, (unsigned char *)payload, payload_size);
+		len += MQTTSerialize_disconnect((unsigned char *)(buf + len), buflen - len);
+		ESP8266_SendTCP(buf, len);
+	// ******
+	} else {
+		UARTprintf("MQTT Server connection unsuccessful");
+		return;
+	}
+	ESP8266_CloseTCPConnection();
+	OSSemPost(print_sem);
+}
 
 //Thermistor Sensor (ADC)- Temperature of Soil
 static  void  Task1 (void *p_arg)
 {
    (void)p_arg;
 	
-    while (1) {              
-			UARTprintf("T1: Soil Temp = %i\n", Get_Temp());
+    while (1) {          
+			
+			OSSemPend(temp_sem, 0, &err);
+			soil_temp[0] = Get_Temp();
+			OSSemPost(temp_sem);
+
+			OSSemPend(print_sem, 0, &err);
+			UARTprintf("T1: Soil Temp = %i\n", soil_temp);
+			OSSemPost(print_sem);
+
       OSTimeDlyHMSM(0, 0, 2, 0);
 		}
 }
@@ -307,23 +399,39 @@ static  void  Task1 (void *p_arg)
 //Soil Moisture Sensor (I2C) - STEMMA
 static  void  Task2 (void *p_arg)
 {
+	  uint32_t moist;
    (void)p_arg;
-	
     while (1) {              
 			BSP_LED_Toggle(1);
-			UARTprintf("T2: Soil Moisture = %i\n", Get_SoilMoisture());
+			OSSemPend(moist_sem, 0, &err);
+			moist = Get_SoilMoisture();
+			soil_moist[0] = moist & 0xff;
+			soil_moist[1] = (moist >> 8) & 0xff;
+			soil_moist[2] = (moist >> 16) & 0xff;
+			soil_moist[3] = (moist >> 24) & 0xff; 
+			OSSemPost(moist_sem);
+			OSSemPend(print_sem, 0, &err);
+			UARTprintf("T2: Soil Moisture = %i\n", moist);
+			OSSemPost(print_sem);
 			OSTimeDlyHMSM(0, 0, 2, 0);
 		}
 }
 
 //Light Sensor (I2C) - VEML7700
 static  void  Task3 (void *p_arg)
-{
-   (void)p_arg;
-	
+{		
+		uint16_t lums;
+		(void)p_arg;
     while (1) {              
 			BSP_LED_Toggle(2);
-			UARTprintf("T3: rawALS = %i\n", Get_Brightness());
+			OSSemPend(lum_sem, 0, &err);
+			lums = Get_Brightness();
+			lumens[0] = lums & 0xff;
+			lumens[1] = (lums >> 8) & 0xff;
+			OSSemPost(lum_sem);
+			OSSemPend(print_sem, 0, &err);
+			UARTprintf("T3: rawALS = %x\n", Get_Brightness());
+			OSSemPost(print_sem);
 			OSTimeDlyHMSM(0, 0, 2, 0);
 		}
 }
@@ -331,11 +439,41 @@ static  void  Task3 (void *p_arg)
 //Enviroment Sensor (I2C) - Humidity & Outside Temperature - Sensirion SHT31-D
 static  void  Task4 (void *p_arg)
 {
+		uint16_t temp;
+		uint16_t hum;
    (void)p_arg;
-	
     while (1) {
-			BSP_LED_Toggle(0);
-			UARTprintf("T4: Humidity = %i\n    Temp = %i\n", Get_EnviromentInfo('H'), Get_EnviromentInfo('T'));
 			OSTimeDlyHMSM(0, 0, 2, 0);
+			BSP_LED_Toggle(0);
+			// UARTprintf("T4: Stat = %x\n", Get_EnviromentInfo('T'));
+			Get_EnviromentInfo(&hum, &temp);
+			OSSemPend(th_sem, 0, &err);
+			env_th[0] = hum & 0xff;
+			env_th[1] = (hum >> 8) & 0xff;
+			env_th[2] = temp & 0xff;
+			env_th[3] = (temp >> 8) & 0xff;
+			OSSemPost(th_sem);
+			OSSemPend(print_sem, 0, &err);
+			UARTprintf("T4: Humidity = %x\n    Temp = %x\n", hum, temp);
+			OSSemPost(print_sem);
 		}
+}
+static  void  Task5 (void *p_arg) {
+	(void)p_arg;
+	while(1){
+		UARTprintf("here");
+		OSSemPend(moist_sem, 0, &err);
+		UARTprintf("here");
+		PublishMQTT("plant/soil_moisture",3,4);
+		OSSemPost(moist_sem);
+		OSSemPend(th_sem, 0, &err);
+		PublishMQTT("plant/th_env",4,4);
+		OSSemPost(th_sem);
+		OSSemPend(lum_sem, 0, &err);
+		PublishMQTT("plant/lum",2,2);
+		OSSemPost(lum_sem);
+		OSSemPend(temp_sem, 0, &err);
+		PublishMQTT("plant/soil_temp",1,1);
+		OSSemPost(temp_sem);
+	}
 }

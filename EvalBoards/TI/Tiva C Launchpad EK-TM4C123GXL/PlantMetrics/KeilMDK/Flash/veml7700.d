@@ -11,6 +11,8 @@
 .\flash\veml7700.o: ..\..\BSP\inc/hw_i2c.h
 .\flash\veml7700.o: ..\..\BSP\inc/hw_types.h
 .\flash\veml7700.o: ..\..\BSP\inc/hw_gpio.h
+.\flash\veml7700.o: ..\..\BSP\driverlib/uart.h
+.\flash\veml7700.o: ..\..\BSP\utils/uartstdio.h
 .\flash\veml7700.o: ..\../bsp/driverlib/i2c.h
 .\flash\veml7700.o: ..\../bsp/driverlib/sysctl.h
 .\flash\veml7700.o: ..\../bsp/driverlib/gpio.h

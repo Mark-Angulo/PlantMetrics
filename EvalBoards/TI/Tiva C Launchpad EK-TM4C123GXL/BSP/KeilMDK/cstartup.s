@@ -68,6 +68,10 @@ __heap_limit
                 EXPORT  __Vectors
                 EXPORT  __Vectors_End
                 EXPORT  __Vectors_Size
+				EXPORT  StartCritical
+				EXPORT  EndCritical
+				EXPORT  DisableInterrupts
+				EXPORT  EnableInterrupts
                 
                 IMPORT  BSP_IntHandlerGPIOA
                 IMPORT  BSP_IntHandlerGPIOB
@@ -331,6 +335,38 @@ __Vectors_Size  EQU     __Vectors_End - __Vectors
 
                 AREA    |.text|, CODE, READONLY
 
+;*********** StartCritical ************************
+; make a copy of previous I bit, disable interrupts
+; inputs:  none
+; outputs: previous I bit
+StartCritical
+        MRS    R0, PRIMASK  ; save old status
+        CPSID  I            ; mask all (except faults)
+        BX     LR
+
+;*********** EndCritical ************************
+; using the copy of previous I bit, restore I bit to previous value
+; inputs:  previous I bit
+; outputs: none
+EndCritical
+        MSR    PRIMASK, R0
+        BX     LR
+
+;*********** DisableInterrupts ***************
+; disable interrupts
+; inputs:  none
+; outputs: none
+DisableInterrupts
+        CPSID  I
+        BX     LR
+
+;*********** EnableInterrupts ***************
+; disable interrupts
+; inputs:  none
+; outputs: none
+EnableInterrupts
+        CPSIE  I
+        BX     LR
 
 ; Reset Handler
 

@@ -6,30 +6,6 @@ uint32_t reg_cache[4];
 
 #define VEML7700_SLAVE_ADDR 0x10 //Light
 
-#ifdef __TI_COMPILER_VERSION__
-  void Delay(unsigned long ulCount) {
-		__asm (" subs r0, #1\n"
-		"	bne Delay \n"
-		"	bx LR\n");
-	}
-#else
-  void Delay(unsigned long ulCount) { 
-		unsigned long d;
-		for (d=0; d<ulCount; d++) {}
-	}
-#endif
-
-#define CLOCKSPEED 80000000
-
-//A General Purpose Delay
-void delay(uint32_t t){ // t is in ms
-	// The Delay function is exactly 3 ARM instructions and is therefore 3 clocks
-	// Do (delay_in_seconds)*clock_speed/3 to get wanted value
-  // (500ms)*80MHz/3 = 13,333,333.33
-	//Delay(13333333); // Delay's 500ms
-	Delay((t*CLOCKSPEED)/1000/3);
-}
-
 
 uint8_t veml_getGain(als_gain_t* gain)
 {
@@ -87,17 +63,19 @@ void veml_begin(uint8_t als_gain)
 
 uint8_t veml_sendData(uint8_t command, uint32_t data)
 {
+	
 	I2CSend(VEML7700_SLAVE_ADDR, 3, command, (uint8_t)(data&0xFF), (uint8_t)((data>>8)&0xFF));
 	return I2CMasterErr(I2C0_BASE);
 }
 
-uint8_t veml_receiveData(uint8_t command, uint32_t* data)
+uint8_t veml_receiveData(uint8_t command, uint8_t* data)
 {
-	*data = I2CReceive(VEML7700_SLAVE_ADDR, command);
+	I2CReceive(VEML7700_SLAVE_ADDR, command, data, 2);
   return I2CMasterErr(I2C0_BASE);
 }
 
-uint8_t veml_getALS(uint32_t* als)
+
+uint8_t veml_getALS(uint8_t* als)
 {
   return veml_receiveData(COMMAND_ALS, als);
 }

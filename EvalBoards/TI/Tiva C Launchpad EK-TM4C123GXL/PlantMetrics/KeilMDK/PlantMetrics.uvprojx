@@ -10,7 +10,7 @@
       <TargetName>FLASH</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -184,7 +184,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -325,7 +324,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -970,21 +968,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>VEML7700</GroupName>
-          <Files>
-            <File>
-              <FileName>VEML7700.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\VEML7700.c</FilePath>
-            </File>
-            <File>
-              <FileName>VEML7700.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\VEML7700.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>SHT31D</GroupName>
           <Files>
             <File>
@@ -996,6 +979,86 @@
               <FileName>SHT31.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\SHT31.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>New Group</GroupName>
+          <Files>
+            <File>
+              <FileName>VEML7700.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\VEML7700.c</FilePath>
+            </File>
+            <File>
+              <FileName>VEML7700.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\VEML7700.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTPacket.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MQTTPacket.h</FilePath>
+            </File>
+            <File>
+              <FileName>esp8266.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\esp8266.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTConnect.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MQTTConnect.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTFormat.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MQTTFormat.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTPublish.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MQTTPublish.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTSubscribe.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MQTTSubscribe.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTUnsubscribe.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MQTTUnsubscribe.h</FilePath>
+            </File>
+            <File>
+              <FileName>StackTrace.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\StackTrace.h</FilePath>
+            </File>
+            <File>
+              <FileName>esp8266.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\esp8266.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UART.h</FilePath>
+            </File>
+            <File>
+              <FileName>FIFO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\FIFO.h</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTPacket.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\MQTTPacket.lib</FilePath>
             </File>
           </Files>
         </Group>

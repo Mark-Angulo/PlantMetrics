@@ -6,6 +6,7 @@
 #include "tm4c123gh6pm.h"
 #include "../bsp/driverlib/i2c.h"
 #include "inc/hw_memmap.h"
+#include "easy_i2c.h"
 
 #define SHT31_DEFAULT_ADDR 0x44 /**< SHT31 Default Address */
 
@@ -29,11 +30,15 @@
 bool SHT31_begin(void);
 uint32_t SHT31_readTemperature(void);
 uint32_t SHT31_readHumidity(void);
+// uint16_t SHT31_readStatus(void);
 uint16_t SHT31_readStatus(void);
 void SHT31_reset(void);
 
 bool SHT31_readTempHum(void);
 bool SHT31_writeCommand(uint16_t cmd);
+void SHT31_readCommand(uint16_t command, uint8_t* buf, uint8_t bytecount);
+
+
 
 
 #endif

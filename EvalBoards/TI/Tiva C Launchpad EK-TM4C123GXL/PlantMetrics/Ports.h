@@ -11,11 +11,10 @@
 
 void Ports_Init(void);
 
-void Init_I2C0(void);
-uint32_t I2CReceive(uint32_t slave_addr, uint8_t reg);
+// void Init_I2C0(void);
 
 uint8_t Get_Temp(void); //Gets the soil temperature from the thermistor
-uint32_t Get_Brightness(void); //Gets the brightness from the VEML7700
+uint16_t Get_Brightness(void);
 uint32_t Get_SoilMoisture(void);
-uint32_t Get_EnviromentInfo(char infoType);
+void Get_EnviromentInfo(uint16_t* hum, uint16_t* temp);
 #endif
