@@ -1,11 +1,14 @@
 #include "Ports.h"
+#include "driverlib/uart.h"
+#include "utils/uartstdio.h"
+#include "easy_i2c.h"
 
 //For I2C
-#define VEML7700_SLAVE_ADDR 0x10 //Light
+#define VEML7700_SLAVE_ADDR 0x11 //Light
 #define STEMMA_SLAVE_ADDR 	0x05 //Soil Moisture
 #define SHT31D_SLAVE_ADDR 	0x44 //Enviroment
 
-//Bit-Specific Addressing
+
 #define PE2 (*((volatile uint32_t *)0x40024010)) //Thermistor
 	
 void Init_I2C0(void) {
@@ -52,7 +55,7 @@ void Ports_Init(void) {
   ADC0_ACTSS_R |= 0x0008;										// 13) enable sample sequencer 3
 
 	//Init I2C
-	Init_I2C0();
+	InitI2C0();
 		
 }
 
@@ -89,14 +92,14 @@ uint8_t Get_Temp(void){
 uint32_t Get_Brightness(void) {
   uint32_t rawALS = 0;
 	
-	veml_getALS(&rawALS);
+	UARTprintf("Error: %d\n", veml_getALS(&rawALS));
 	
 	return rawALS;
 }
 
 uint8_t Get_EnviromentInfo(char infoType) {
 	
-	uint8_t data = -1;
+	uint8_t data = 0;
 	
 	switch (infoType) {
 		case 'H':
