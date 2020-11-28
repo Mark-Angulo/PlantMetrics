@@ -33,3 +33,5 @@
 .\flash\app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\flash\app.o: ..\tm4c123gh6pm.h
 .\flash\app.o: ..\../bsp/driverlib/i2c.h
+.\flash\app.o: ..\SHT31.h
+.\flash\app.o: ..\../bsp/driverlib/i2c.h

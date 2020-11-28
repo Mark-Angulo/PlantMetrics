@@ -1,6 +1,6 @@
 Dependencies for Project 'PlantMetrics', Target 'FLASH': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (..\app.c)(0x5FC175EC)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\app.o --omf_browse .\flash\app.crf --depend .\flash\app.d)
+F (..\app.c)(0x5FC19F4A)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\app.o --omf_browse .\flash\app.crf --depend .\flash\app.d)
 I (..\app_cfg.h)(0x5FC170AE)
 I (..\..\..\..\..\uC-CPU\cpu_core.h)(0x5E556C88)
 I (..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView\cpu.h)(0x5E556C88)
@@ -27,13 +27,14 @@ I (..\..\BSP\driverlib/sysctl.h)(0x5E556C86)
 I (..\..\BSP\driverlib/uart.h)(0x5E556C86)
 I (..\..\BSP\utils/uartstdio.h)(0x5E556C88)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5D9B88EA)
-I (..\Ports.h)(0x5FC175E4)
+I (..\Ports.h)(0x5FC193D9)
 I (C:\Keil_v5\ARM\ARMCC\include\Math.h)(0x5D9B88E2)
 I (..\..\bsp\driverlib\i2c.h)(0x5FBFDE29)
-I (..\VEML7700.h)(0x5FC175AD)
+I (..\VEML7700.h)(0x5FC19C1A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B88EA)
 I (..\tm4c123gh6pm.h)(0x5BA29B9E)
 I (..\../bsp/driverlib/i2c.h)(0x5FBFDE29)
+I (..\SHT31.h)(0x5FC19E47)
 F (..\app_cfg.h)(0x5FC170AE)()
 F (..\bsp_cfg.h)(0x5E556C88)()
 F (..\cpu_cfg.h)(0x5E556C88)()
@@ -520,25 +521,35 @@ I (..\..\BSP\driverlib/rom_map.h)(0x5E556C86)
 I (..\..\BSP\driverlib/sysctl.h)(0x5E556C86)
 I (..\..\BSP\driverlib/uart.h)(0x5E556C86)
 I (..\..\BSP\utils/uartstdio.h)(0x5E556C88)
-F (..\Ports.c)(0x5FC175E4)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\ports.o --omf_browse .\flash\ports.crf --depend .\flash\ports.d)
-I (..\Ports.h)(0x5FC175E4)
+F (..\Ports.c)(0x5FC19E50)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\ports.o --omf_browse .\flash\ports.crf --depend .\flash\ports.d)
+I (..\Ports.h)(0x5FC193D9)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B88E8)
 I (C:\Keil_v5\ARM\ARMCC\include\Math.h)(0x5D9B88E2)
 I (..\..\bsp\driverlib\i2c.h)(0x5FBFDE29)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9B88E8)
 I (..\..\BSP\inc/hw_memmap.h)(0x5E556C86)
-I (..\VEML7700.h)(0x5FC175AD)
+I (..\VEML7700.h)(0x5FC19C1A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B88EA)
 I (..\tm4c123gh6pm.h)(0x5BA29B9E)
 I (..\../bsp/driverlib/i2c.h)(0x5FBFDE29)
-F (..\Ports.h)(0x5FC175E4)()
+I (..\SHT31.h)(0x5FC19E47)
+F (..\Ports.h)(0x5FC193D9)()
 F (..\tm4c123gh6pm.h)(0x5BA29B9E)()
-F (..\VEML7700.c)(0x5FC16134)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\veml7700.o --omf_browse .\flash\veml7700.crf --depend .\flash\veml7700.d)
-I (..\VEML7700.h)(0x5FC175AD)
+F (..\VEML7700.c)(0x5FC1766E)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\veml7700.o --omf_browse .\flash\veml7700.crf --depend .\flash\veml7700.d)
+I (..\VEML7700.h)(0x5FC19C1A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B88E8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B88EA)
 I (..\tm4c123gh6pm.h)(0x5BA29B9E)
 I (..\../bsp/driverlib/i2c.h)(0x5FBFDE29)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9B88E8)
 I (..\..\BSP\inc/hw_memmap.h)(0x5E556C86)
-F (..\VEML7700.h)(0x5FC175AD)()
+F (..\VEML7700.h)(0x5FC19C1A)()
+F (..\SHT31.c)(0x5FC19E71)(-c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I ..\ -I ..\..\BSP -I ..\..\..\..\..\uC-CPU -I ..\..\..\..\..\uC-CPU\ARM-Cortex-M4\RealView -I ..\..\..\..\..\uC-LIB -I ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M4\Generic\RealView -I ..\..\..\..\..\uCOS-II\Source-I.\RTE\_FLASH-IC:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="529" -D_RTE_ -DTM4C123GH6PM-o .\flash\sht31.o --omf_browse .\flash\sht31.crf --depend .\flash\sht31.d)
+I (..\SHT31.h)(0x5FC19E47)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B88E8)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B88EA)
+I (..\tm4c123gh6pm.h)(0x5BA29B9E)
+I (..\../bsp/driverlib/i2c.h)(0x5FBFDE29)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9B88E8)
+I (..\..\BSP\inc/hw_memmap.h)(0x5E556C86)
+F (..\SHT31.h)(0x5FC19E47)()

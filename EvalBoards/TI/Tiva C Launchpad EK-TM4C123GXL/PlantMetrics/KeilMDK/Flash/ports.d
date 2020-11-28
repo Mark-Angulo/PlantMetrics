@@ -9,3 +9,5 @@
 .\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\flash\ports.o: ..\tm4c123gh6pm.h
 .\flash\ports.o: ..\../bsp/driverlib/i2c.h
+.\flash\ports.o: ..\SHT31.h
+.\flash\ports.o: ..\../bsp/driverlib/i2c.h

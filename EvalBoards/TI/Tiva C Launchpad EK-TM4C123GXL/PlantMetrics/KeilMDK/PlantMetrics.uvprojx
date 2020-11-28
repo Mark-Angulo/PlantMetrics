@@ -975,6 +975,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>SHT31D</GroupName>
+          <Files>
+            <File>
+              <FileName>SHT31.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SHT31.c</FilePath>
+            </File>
+            <File>
+              <FileName>SHT31.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\SHT31.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>

@@ -7,6 +7,7 @@
 #include  "..\bsp\driverlib\i2c.h"
 #include "inc/hw_memmap.h"
 #include "VEML7700.h"
+#include "SHT31.h"
 
 void Ports_Init(void);
 

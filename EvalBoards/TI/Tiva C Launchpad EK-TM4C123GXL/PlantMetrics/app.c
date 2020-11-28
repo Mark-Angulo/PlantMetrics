@@ -301,8 +301,8 @@ static  void  Task1 (void *p_arg)
     while (1) {              
       BSP_LED_Toggle(0);
 			UARTprintf("T1: ");
-			UARTprintf("t=%i\n", Get_Temp());
-      OSTimeDlyHMSM(0, 0, 0, 400);
+			UARTprintf("Soil Temp =%i\n", Get_Temp());
+      OSTimeDlyHMSM(0, 0, 1, 0);
 		}
 }
 
@@ -313,8 +313,9 @@ static  void  Task2 (void *p_arg)
 	
     while (1) {              
 			BSP_LED_Toggle(1);
-			UARTprintf("T2 \n");
-			OSTimeDlyHMSM(0, 0, 0, 500);
+			UARTprintf("T2: ");
+			UARTprintf("Soil Moisture = %s\n", "Not Implemented");
+			OSTimeDlyHMSM(0, 0, 1, 0);
 		}
 }
 
@@ -327,17 +328,18 @@ static  void  Task3 (void *p_arg)
 			BSP_LED_Toggle(2);
 			UARTprintf("T3: ");
 			UARTprintf("Brightness = %i\n", Get_Brightness());
-			OSTimeDlyHMSM(0, 0, 0, 600);
+			OSTimeDlyHMSM(0, 0, 1, 0);
 		}
 }
 
-//Enviroment Sensor (I2C) - Humidity & Outside Temperature - Sensirion SH31-D
+//Enviroment Sensor (I2C) - Humidity & Outside Temperature - Sensirion SHT31-D
 static  void  Task4 (void *p_arg)
 {
    (void)p_arg;
 	
     while (1) {  			
-			UARTprintf("T4 \n");
-			OSTimeDlyHMSM(0, 0, 0, 700);
+			UARTprintf("T4: ");
+			UARTprintf("Humidity = %i\n    Temp = %i\n", Get_EnviromentInfo('H'), Get_EnviromentInfo('T'));
+			OSTimeDlyHMSM(0, 0, 1, 0);
 		}
 }

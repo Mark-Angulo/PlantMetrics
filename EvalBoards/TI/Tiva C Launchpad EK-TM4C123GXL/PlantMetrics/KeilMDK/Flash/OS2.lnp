@@ -55,6 +55,7 @@
 ".\flash\uartstdio.o"
 ".\flash\ports.o"
 ".\flash\veml7700.o"
+".\flash\sht31.o"
 --library_type=microlib --strict --scatter ".\Flash\OS2.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

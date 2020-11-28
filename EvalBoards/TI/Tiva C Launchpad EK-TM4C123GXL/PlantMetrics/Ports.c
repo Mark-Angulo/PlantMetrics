@@ -3,13 +3,10 @@
 //For I2C
 #define VEML7700_SLAVE_ADDR 0x10 //Light
 #define STEMMA_SLAVE_ADDR 	0x05 //Soil Moisture
-#define SH31D_SLAVE_ADDR 		0x06 //Enviroment
+#define SHT31D_SLAVE_ADDR 	0x44 //Enviroment
 
 //Bit-Specific Addressing
 #define PE2 (*((volatile uint32_t *)0x40024010)) //Thermistor
-#define PE3 (*((volatile uint32_t *)0x40024020)) //
-#define PE4 (*((volatile uint32_t *)0x40024040)) //
-#define PE5 (*((volatile uint32_t *)0x40024080)) //
 	
 void Init_I2C0(void) {
 	SYSCTL_RCGCI2C_R |= 0x0001;								// activate I2C Clk
@@ -20,9 +17,12 @@ void Init_I2C0(void) {
 	//Initialize Slaves
 	I2CSlaveInit(I2C0_BASE, VEML7700_SLAVE_ADDR);
 	veml_begin(ALS_GAIN_x2);
+	
 	I2CSlaveInit(I2C0_BASE, STEMMA_SLAVE_ADDR);
 	
-	I2CSlaveInit(I2C0_BASE, SH31D_SLAVE_ADDR);
+	
+	I2CSlaveInit(I2C0_BASE, SHT31D_SLAVE_ADDR);
+	SHT31_begin();
 	
 }
 	
@@ -92,5 +92,21 @@ uint32_t Get_Brightness(void) {
 	veml_getALS(&rawALS);
 	
 	return rawALS;
+}
+
+uint8_t Get_EnviromentInfo(char infoType) {
+	
+	uint8_t data = -1;
+	
+	switch (infoType) {
+		case 'H':
+			data = SHT31_readHumidity();
+			break;
+		case 'T':
+			data = SHT31_readTemperature();
+			break;
+	}
+	
+	return data;
 }
 
