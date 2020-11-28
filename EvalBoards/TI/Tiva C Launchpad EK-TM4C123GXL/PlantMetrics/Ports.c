@@ -10,16 +10,14 @@
 #define SHT31D_SLAVE_ADDR 	0x44 //Enviroment
 #define PE2 (*((volatile uint32_t *)0x40024010)) //Thermistor
 	
-
-	
 void Init_I2C0(void) {
 	//Initialize Master
 	InitI2C0(); //from easy_i2c
 	//Initialize Slaves
-	// I2CSlaveInit(I2C0_BASE, VEML7700_SLAVE_ADDR);
+	I2CSlaveInit(I2C0_BASE, VEML7700_SLAVE_ADDR);
 	veml_begin(ALS_GAIN_x2);
-	// I2CSlaveInit(I2C0_BASE, STEMMA_SLAVE_ADDR);
-	// I2CSlaveInit(I2C0_BASE, SHT31D_SLAVE_ADDR);
+	I2CSlaveInit(I2C0_BASE, STEMMA_SLAVE_ADDR);
+	I2CSlaveInit(I2C0_BASE, SHT31D_SLAVE_ADDR);
 	delay(100);
 	SHT31_begin();
 }

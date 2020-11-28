@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu=Cortex-M4.fp.sp
 ".\flash\app.o"
 ".\flash\app_hooks.o"
 ".\flash\bsp.o"

@@ -284,23 +284,23 @@ static  void  AppTaskCreate (void)
 OSTaskCreate((void (*)(void *)) Task1,           /* Create the second task                                */
                     (void           *) 0,							// argument
                     (OS_STK         *)&Task1Stk[APP_CFG_TASK_START_STK_SIZE - 1],
-                    (INT8U           ) 5 );  						// Task Priority
+                    (INT8U           ) 8 );  						// Task Priority
                 
 
 OSTaskCreate((void (*)(void *)) Task2,           /* Create the second task                                */
                     (void           *) 0,							// argument
                     (OS_STK         *)&Task2Stk[APP_CFG_TASK_START_STK_SIZE - 1],
-                    (INT8U           ) 6 );  						// Task Priority
+                    (INT8U           ) 7 );  						// Task Priority
 										
 OSTaskCreate((void (*)(void *)) Task3,           /* Create the third task                                */
                     (void           *) 0,							// argument
                     (OS_STK         *)&Task3Stk[APP_CFG_TASK_START_STK_SIZE - 1],
-                    (INT8U           ) 7 );  						// Task Priority
+                    (INT8U           ) 6 );  						// Task Priority
 										
 OSTaskCreate((void (*)(void *)) Task4,           /* Create the four task                                */
                     (void           *) 0,							// argument
                     (OS_STK         *)&Task4Stk[APP_CFG_TASK_START_STK_SIZE - 1],
-                    (INT8U           ) 8 );  						// Task Priority
+                    (INT8U           ) 5 );  						// Task Priority
 
 /*OSTaskCreate((void (*)(void *)) Task5,           
                     (void           *) 0,							// argument
@@ -389,7 +389,7 @@ static  void  Task1 (void *p_arg)
 			OSSemPost(temp_sem);
 
 			OSSemPend(print_sem, 0, &err);
-			UARTprintf("T1: Soil Temp = %i\n", soil_temp);
+			UARTprintf("T1: Soil Temp = %d\n", soil_temp[0]);
 			OSSemPost(print_sem);
 
       OSTimeDlyHMSM(0, 0, 2, 0);
@@ -411,7 +411,7 @@ static  void  Task2 (void *p_arg)
 			soil_moist[3] = (moist >> 24) & 0xff; 
 			OSSemPost(moist_sem);
 			OSSemPend(print_sem, 0, &err);
-			UARTprintf("T2: Soil Moisture = %i\n", moist);
+			UARTprintf("T2: Soil Moisture = %d\n", moist);
 			OSSemPost(print_sem);
 			OSTimeDlyHMSM(0, 0, 2, 0);
 		}
@@ -430,7 +430,7 @@ static  void  Task3 (void *p_arg)
 			lumens[1] = (lums >> 8) & 0xff;
 			OSSemPost(lum_sem);
 			OSSemPend(print_sem, 0, &err);
-			UARTprintf("T3: rawALS = %x\n", Get_Brightness());
+			UARTprintf("T3: rawALS = %d\n", Get_Brightness());
 			OSSemPost(print_sem);
 			OSTimeDlyHMSM(0, 0, 2, 0);
 		}
@@ -454,7 +454,7 @@ static  void  Task4 (void *p_arg)
 			env_th[3] = (temp >> 8) & 0xff;
 			OSSemPost(th_sem);
 			OSSemPend(print_sem, 0, &err);
-			UARTprintf("T4: Humidity = %x\n    Temp = %x\n", hum, temp);
+			UARTprintf("T4: Humidity = %d\n    Temp = %d\n", hum, temp);
 			OSSemPost(print_sem);
 		}
 }
