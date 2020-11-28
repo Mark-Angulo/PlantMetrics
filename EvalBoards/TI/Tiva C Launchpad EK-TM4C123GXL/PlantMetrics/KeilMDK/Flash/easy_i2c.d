@@ -1,0 +1,13 @@
+.\flash\easy_i2c.o: ..\easy_i2c.c
+.\flash\easy_i2c.o: ..\easy_i2c.h
+.\flash\easy_i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\flash\easy_i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\flash\easy_i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\flash\easy_i2c.o: ..\..\BSP\inc/hw_i2c.h
+.\flash\easy_i2c.o: ..\..\BSP\inc/hw_types.h
+.\flash\easy_i2c.o: ..\..\BSP\inc/hw_gpio.h
+.\flash\easy_i2c.o: ..\..\BSP\inc/hw_memmap.h
+.\flash\easy_i2c.o: ..\../bsp/driverlib/i2c.h
+.\flash\easy_i2c.o: ..\../bsp/driverlib/sysctl.h
+.\flash\easy_i2c.o: ..\../bsp/driverlib/gpio.h
+.\flash\easy_i2c.o: ..\../bsp/driverlib/pin_map.h

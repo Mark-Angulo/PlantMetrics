@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .\flash\ports.o: ..\Ports.c
 .\flash\ports.o: ..\Ports.h
 .\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -12,18 +11,6 @@
 .\flash\ports.o: ..\../bsp/driverlib/i2c.h
 .\flash\ports.o: ..\SHT31.h
 .\flash\ports.o: ..\../bsp/driverlib/i2c.h
-=======
-.\flash\ports.o: ..\Ports.c
-.\flash\ports.o: ..\Ports.h
-.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
-.\flash\ports.o: ..\..\bsp\driverlib\i2c.h
-.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\flash\ports.o: ..\..\BSP\inc/hw_memmap.h
-.\flash\ports.o: ..\VEML7700.h
-.\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\flash\ports.o: ..\tm4c123gh6pm.h
-.\flash\ports.o: ..\../bsp/driverlib/i2c.h
 .\flash\ports.o: ..\..\BSP\driverlib/uart.h
 .\flash\ports.o: ..\..\BSP\utils/uartstdio.h
 .\flash\ports.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
@@ -35,4 +22,3 @@
 .\flash\ports.o: ..\../bsp/driverlib/sysctl.h
 .\flash\ports.o: ..\../bsp/driverlib/gpio.h
 .\flash\ports.o: ..\../bsp/driverlib/pin_map.h
->>>>>>> 7d9e49ce48fa144747d962fb58bd65d5ec7141d5

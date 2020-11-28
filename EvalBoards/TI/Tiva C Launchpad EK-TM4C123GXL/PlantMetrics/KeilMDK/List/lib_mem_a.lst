@@ -443,13 +443,14 @@ ARM Macro Assembler    Page 7
   309 00000220         
   310 00000220         
   311 00000220                 END
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
-erwork --depend=.\flash\lib_mem_a.d -o.\flash\lib_mem_a.o -I.\RTE\_FLASH -IC:\K
-eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\TM4C_D
-FP\1.1.0\Device\Include\TM4C123 --predefine="__EVAL SETA 1" --predefine="__MICR
-OLIB SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1
-" --predefine="TM4C123GH6PM SETA 1" --list=.\list\lib_mem_a.lst ..\..\..\..\..\
-uC-LIB\Ports\ARM-Cortex-M4\RealView\lib_mem_a.asm
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
+interwork --depend=.\flash\lib_mem_a.d -o.\flash\lib_mem_a.o -I.\RTE\_FLASH -IC
+:\Users\solom\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\U
+sers\solom\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 -
+-predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISI
+ON_VERSION SETA 529" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 
+1" --list=.\list\lib_mem_a.lst ..\..\..\..\..\uC-LIB\Ports\ARM-Cortex-M4\RealVi
+ew\lib_mem_a.asm
 
 
 
